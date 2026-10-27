@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Oct 27 17:14:36 2026
+# Process ID: 15440
+# Current directory: C:/Vivado/final_project/MNIST_FPGA
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent19604 C:\Vivado\final_project\MNIST_FPGA\MNIST_FPGA.xpr
+# Log file: C:/Vivado/final_project/MNIST_FPGA/vivado.log
+# Journal file: C:/Vivado/final_project/MNIST_FPGA\vivado.jou
+# Running On: LAPTOP-6ADOKTNO, OS: Windows, CPU Frequency: 2611 MHz, CPU Physical cores: 10, Host memory: 16835 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Vivado/final_project/MNIST_FPGA/MNIST_FPGA.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source accumulation_tb.tcl
+close_sim
+close_project

@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../MNIST_FPGA.srcs/sources_1/new/accumulation.vhd" \
+"../../../../MNIST_FPGA.srcs/sim_1/new/accumulation_tb.vhd" \
+
+# Do not sort compile order
+nosort
