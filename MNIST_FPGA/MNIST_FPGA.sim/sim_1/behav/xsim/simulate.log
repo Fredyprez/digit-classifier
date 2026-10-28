@@ -1,4 +1,4 @@
 Time resolution is 1 ps
 Failure: Simulation Completed
-Time: 190 ns  Iteration: 1  Process: /accumulation_tb/line__64  File: C:/Vivado/final_project/MNIST_FPGA/MNIST_FPGA.srcs/sim_1/new/accumulation_tb.vhd
-$finish called at time : 190 ns : File "C:/Vivado/final_project/MNIST_FPGA/MNIST_FPGA.srcs/sim_1/new/accumulation_tb.vhd" Line 94
+Time: 210 ns  Iteration: 1  Process: /accumulation_tb/line__71  File: C:/Vivado/final_project/MNIST_FPGA/MNIST_FPGA.srcs/sim_1/new/accumulation_tb.vhd
+$finish called at time : 210 ns : File "C:/Vivado/final_project/MNIST_FPGA/MNIST_FPGA.srcs/sim_1/new/accumulation_tb.vhd" Line 115

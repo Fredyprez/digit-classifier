@@ -2,5 +2,5 @@
 2020.2
 Oct 13 2023
 20:47:58
-C:/Vivado/final_project/MNIST_FPGA/MNIST_FPGA.srcs/sim_1/new/accumulation_tb.vhd,1793135800,vhdl,,,,accumulation_tb,,,,,,,,
-C:/Vivado/final_project/MNIST_FPGA/MNIST_FPGA.srcs/sources_1/new/accumulation.vhd,1793129236,vhdl,C:/Vivado/final_project/MNIST_FPGA/MNIST_FPGA.srcs/sim_1/new/accumulation_tb.vhd,,,accumulation,,,,,,,,
+C:/Vivado/final_project/MNIST_FPGA/MNIST_FPGA.srcs/sim_1/new/accumulation_tb.vhd,1793159809,vhdl,,,,accumulation_tb,,,,,,,,
+C:/Vivado/final_project/MNIST_FPGA/MNIST_FPGA.srcs/sources_1/new/accumulation.vhd,1793161260,vhdl,C:/Vivado/final_project/MNIST_FPGA/MNIST_FPGA.srcs/sim_1/new/accumulation_tb.vhd,,,accumulation,,,,,,,,

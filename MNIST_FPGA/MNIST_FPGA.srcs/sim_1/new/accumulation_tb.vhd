@@ -31,23 +31,30 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity accumulation_tb is
+entity accumulation_tb is       
 end accumulation_tb;
 
 architecture Testbench of accumulation_tb is
     constant T : time := 10ns;
+
     signal weight_t : STD_LOGIC_VECTOR (7 downto 0);
+    signal bias_t : STD_LOGIC_VECTOR(31 downto 0);
     signal clk_t : STD_LOGIC;
     signal reset_t : STD_LOGIC;
     signal px_t : STD_LOGIC;
+    signal opcode_t : STD_LOGIC_VECTOR(1 downto 0);
     signal accumulated_t : STD_LOGIC_VECTOR (15 downto 0);
 begin
     UUT : entity work.accumulation(Behavioral)
+        generic map(N=>16)
         port map(
             clk => clk_t,
             reset => reset_t,
             weight => weight_t,
+            bias => bias_t(31 downto 0),
             pixel => px_t,
+            valid => opcode_t(1),
+            opcode => opcode_t(0),
             accumulated => accumulated_t
         );
         
@@ -63,24 +70,31 @@ begin
     
     process
     begin
+        opcode_t <= "11";
         reset_t <= '1';
         wait until rising_edge(clk_t);
         wait until rising_edge(clk_t);
         reset_t <= '0';
         weight_t <= x"10";
+        bias_t <= x"FFFFFFF3";
         px_t <= '0';
+        
         wait until falling_edge(clk_t);
         wait until falling_edge(clk_t);
+        opcode_t <= "10";
         px_t <= '1';
         weight_t <= x"FF";
         for i in 1 to 10 loop
             wait until falling_edge(clk_t);
         end loop;
-        wait until falling_edge(clk_t);
-        reset_t <= '1';
+        opcode_t <= "01";
+        bias_t <= x"00000032";
+        --wait until falling_edge(clk_t);
+        --reset_t <= '1';
+        --wait until rising_edge(clk_t);
+        --reset_t <= '0';
         wait until rising_edge(clk_t);
-        reset_t <= '0';
-        wait until rising_edge(clk_t);
+        opcode_t <= "10";
         px_t <= '0';
         wait until falling_edge(clk_t);
         weight_t <= x"78";
@@ -88,7 +102,14 @@ begin
         weight_t <= x"64";
         wait until falling_edge(clk_t);
         px_t <= '1';
+        opcode_t <= "00";
+        for i in 1 to 3 loop
+            wait until falling_edge(clk_t);
+        end loop;
         wait until falling_edge(clk_t);
+        opcode_t <= "10";
+        wait until falling_edge(clk_t);
+        px_t <= '0';
         assert false
             report "Simulation Completed"
             severity failure;
