@@ -1,0 +1,2 @@
+w1_blk_rom.v,verilog,xil_defaultlib,../../../../MNIST_FPGA.gen/sources_1/ip/w1_blk_rom/sim/w1_blk_rom.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v
