@@ -1,4 +1,4 @@
-Running: xsim.dir/neuron_ctrl_tb_behav/xsimk.exe -simmode gui -wdb neuron_ctrl_tb_behav.wdb -simrunnum 0 -socket 54948
+Running: xsim.dir/neuron_ctrl_tb_behav/xsimk.exe -simmode gui -wdb neuron_ctrl_tb_behav.wdb -simrunnum 0 -socket 59243
 Design successfully loaded
-Design Loading Memory Usage: 10020 KB (Peak: 10020 KB)
-Design Loading CPU Usage: 61 ms
+Design Loading Memory Usage: 10016 KB (Peak: 10016 KB)
+Design Loading CPU Usage: 30 ms

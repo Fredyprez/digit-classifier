@@ -62,9 +62,12 @@ architecture Behavioral of neuron_ctrl is
    
     --internal control signals 
     signal ubias_addr : unsigned(5 downto 0);
-    signal weight_count : unsigned(9 downto 0);
     signal uweight_addr : STD_LOGIC_VECTOR(15 downto 0);
     signal rom_data_valid : STD_LOGIC;
+    
+        --internal registers
+    signal weight_count : unsigned(9 downto 0);
+    signal read_valid : STD_LOGIC_VECTOR(1 downto 0);
     
 begin
     
@@ -73,7 +76,7 @@ begin
             clk => clk,
             reset => reset,
             pixel => image_px,
-            valid => mac_valid,
+            valid => rom_data_valid,
             opcode => mac_opcode,
             weight =>  mac_weight,
             bias => mac_bias,
@@ -85,7 +88,6 @@ begin
             clka => clk,
             addra => uweight_addr,
             douta => mac_weight
-        
         );
         
         process(clk)
@@ -96,18 +98,30 @@ begin
                     ubias_addr <= (others => '0');
                     uweight_addr <= (others => '0');
                     weight_count <= (others => '0');
+                    read_valid <= "00";
                 else 
                     state_reg <= state_next;
-                    if state_reg = COMPUTE then
-                        weight_count <= weight_count + 1;
-                        ubias_addr <= ubias_addr + 1;
-                        uweight_addr <= STD_LOGIC_VECTOR(unsigned(uweight_addr) + 1);
-                    else
-                        weight_count <= weight_count;
-                        ubias_addr <= ubias_addr;
-                        uweight_addr <= uweight_addr;
-                    end if;
+                    case state_reg is
+                        when READ =>
+                            if read_valid = "00" then
+                                read_valid(0) <= '1';
+                            elsif read_valid = "01" then
+                                read_valid(0) <= '0';
+                                read_valid(1) <= read_valid(0);
+                            else
+                                read_valid <= "00";
+                            end if;
+                        when COMPUTE =>
+                            weight_count <= weight_count + 1;
+                            ubias_addr <= ubias_addr + 1;
+                            uweight_addr <= STD_LOGIC_VECTOR(unsigned(uweight_addr) + 1);
+                        when others =>
+                            weight_count <= weight_count;
+                            ubias_addr <= ubias_addr;
+                            uweight_addr <= uweight_addr;
+                        end case;
                 end if;
+                
             end if;
         end process;
     
@@ -139,7 +153,14 @@ begin
         end case; 
     end process;    
     
-    rom_data_valid <= '1' when state_reg = READ else '0';
+    --rom_data_valid <= '1' when state_reg = READ else '0';
+    rom_data_valid <= '1' when read_valid = "10" else '0';
+    --mac_valid <= '1' when read_valid = "10" else '0';
+    
+    
+    --***working to get mac_opcode to be correct for bias or weight loading
+    -- additionally need to generate pixel ROM and figure out specifics
+    mac_opcode <= '0' when start = '0' else '1';
     
     
 end Behavioral;
