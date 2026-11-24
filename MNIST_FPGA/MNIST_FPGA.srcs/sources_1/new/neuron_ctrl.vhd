@@ -39,22 +39,31 @@ entity neuron_ctrl is
     Port ( start : in STD_LOGIC;
            clk, reset : in STD_LOGIC;
            busy : out STD_LOGIC;
-           done : out STD_LOGIC
-           );
+           done : out STD_LOGIC);
 end neuron_ctrl;
 
 architecture Behavioral of neuron_ctrl is
  
     type state_type is (IDLE, READ, COMPUTE);
-    signal read_op : STD_LOGIC_VECTOR(1 downto 0);
-    signal compute_op, busy_reg : STD_LOGIC;
+    --signal read_op : STD_LOGIC_VECTOR(1 downto 0);
+    --signal compute_op, busy_reg : STD_LOGIC;
+    
+    --state machine registers
     signal state_reg, state_next : state_type;
+    
+    --MAC signals
     signal image_px, mac_valid, mac_opcode : STD_LOGIC;
     signal mac_weight : STD_LOGIC_VECTOR(7 downto 0);
     signal mac_bias : STD_LOGIC_VECTOR(31 downto 0);
     signal mac_accumulated : STD_LOGIC_VECTOR(15 downto 0);
-    signal uweight_addr : unsigned(15 downto 0);
-    signal ubias_addr, weight_count : unsigned(5 downto 0);
+    
+    
+    
+   
+    --internal control signals 
+    signal ubias_addr : unsigned(5 downto 0);
+    signal weight_count : unsigned(9 downto 0);
+    signal uweight_addr : STD_LOGIC_VECTOR(15 downto 0);
     signal rom_data_valid : STD_LOGIC;
     
 begin
@@ -71,6 +80,14 @@ begin
             accumulated => mac_accumulated
         );
         
+    WROM1 : entity work.w1_blk_rom
+        port map(
+            clka => clk,
+            addra => uweight_addr,
+            douta => mac_weight
+        
+        );
+        
         process(clk)
         begin
             if rising_edge(clk) then
@@ -78,9 +95,19 @@ begin
                     state_reg <= IDLE;
                     ubias_addr <= (others => '0');
                     uweight_addr <= (others => '0');
-                else
+                    weight_count <= (others => '0');
+                else 
                     state_reg <= state_next;
-                 end if;
+                    if state_reg = COMPUTE then
+                        weight_count <= weight_count + 1;
+                        ubias_addr <= ubias_addr + 1;
+                        uweight_addr <= STD_LOGIC_VECTOR(unsigned(uweight_addr) + 1);
+                    else
+                        weight_count <= weight_count;
+                        ubias_addr <= ubias_addr;
+                        uweight_addr <= uweight_addr;
+                    end if;
+                end if;
             end if;
         end process;
     
@@ -102,14 +129,17 @@ begin
                     state_next <= READ;
                 end if;
             when COMPUTE =>
-                if weight_count < 784 then
-                    state_next <= READ;
-                else
+                if weight_count = 783 then
                     state_next <= IDLE;
+                else
+                    state_next <= READ;
                 end if;
             when others =>
                 state_next <= IDLE;
         end case; 
     end process;    
+    
+    rom_data_valid <= '1' when state_reg = READ else '0';
+    
     
 end Behavioral;
