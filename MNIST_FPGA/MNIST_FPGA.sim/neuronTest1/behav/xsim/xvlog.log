@@ -1,2 +1,4 @@
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Vivado/final_project/digit-classifier/MNIST_FPGA/MNIST_FPGA.gen/sources_1/ip/w1_blk_rom/sim/w1_blk_rom.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module w1_blk_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Vivado/final_project/digit-classifier/MNIST_FPGA/MNIST_FPGA.sim/neuronTest1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
