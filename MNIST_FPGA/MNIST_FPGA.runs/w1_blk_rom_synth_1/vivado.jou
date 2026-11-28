@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Fri Nov 27 13:23:22 2026
+# Process ID: 11720
+# Current directory: C:/Vivado/final_project/digit-classifier/MNIST_FPGA/MNIST_FPGA.runs/w1_blk_rom_synth_1
+# Command line: vivado.exe -log w1_blk_rom.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source w1_blk_rom.tcl
+# Log file: C:/Vivado/final_project/digit-classifier/MNIST_FPGA/MNIST_FPGA.runs/w1_blk_rom_synth_1/w1_blk_rom.vds
+# Journal file: C:/Vivado/final_project/digit-classifier/MNIST_FPGA/MNIST_FPGA.runs/w1_blk_rom_synth_1\vivado.jou
+# Running On: LAPTOP-6ADOKTNO, OS: Windows, CPU Frequency: 2611 MHz, CPU Physical cores: 10, Host memory: 16835 MB
+#-----------------------------------------------------------
+source w1_blk_rom.tcl -notrace

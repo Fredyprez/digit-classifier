@@ -1,0 +1,7 @@
+verilog xil_defaultlib  \
+"../../../../MNIST_FPGA.gen/sources_1/ip/b1_blk_rom/sim/b1_blk_rom.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

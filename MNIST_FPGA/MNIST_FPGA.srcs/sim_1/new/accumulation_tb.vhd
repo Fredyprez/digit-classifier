@@ -41,7 +41,7 @@ architecture Testbench of accumulation_tb is
     signal bias_t : STD_LOGIC_VECTOR(31 downto 0);
     signal clk_t : STD_LOGIC;
     signal reset_t : STD_LOGIC;
-    signal px_t : STD_LOGIC;
+    signal px_t : STD_LOGIC_VECTOR(0 downto 0);
     signal opcode_t : STD_LOGIC_VECTOR(1 downto 0);
     signal accumulated_t : STD_LOGIC_VECTOR (15 downto 0);
 begin
@@ -77,12 +77,12 @@ begin
         reset_t <= '0';
         weight_t <= x"10";
         bias_t <= x"FFFFFFF3";
-        px_t <= '0';
+        px_t(0) <= '0';
         
         wait until falling_edge(clk_t);
         wait until falling_edge(clk_t);
         opcode_t <= "10";
-        px_t <= '1';
+        px_t(0) <= '1';
         weight_t <= x"FF";
         for i in 1 to 10 loop
             wait until falling_edge(clk_t);
@@ -95,13 +95,13 @@ begin
         --reset_t <= '0';
         wait until rising_edge(clk_t);
         opcode_t <= "10";
-        px_t <= '0';
+        px_t(0) <= '0';
         wait until falling_edge(clk_t);
         weight_t <= x"78";
         wait until falling_edge(clk_t);
         weight_t <= x"64";
         wait until falling_edge(clk_t);
-        px_t <= '1';
+        px_t(0) <= '1';
         opcode_t <= "00";
         for i in 1 to 3 loop
             wait until falling_edge(clk_t);
@@ -109,7 +109,7 @@ begin
         wait until falling_edge(clk_t);
         opcode_t <= "10";
         wait until falling_edge(clk_t);
-        px_t <= '0';
+        px_t(0) <= '0';
         assert false
             report "Simulation Completed"
             severity failure;

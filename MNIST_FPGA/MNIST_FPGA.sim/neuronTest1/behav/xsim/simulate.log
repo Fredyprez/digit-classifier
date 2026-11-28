@@ -4,4 +4,13 @@ Time resolution is 1 ps
 Block Memory Generator module neuron_ctrl_tb.neuron_controller.WROM1.U0.\native_mem_module.blk_mem_gen_v8_4_7_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
  Block Memory Generator module loading initial data...
  Block Memory Generator data initialization complete.
+Block Memory Generator module neuron_ctrl_tb.neuron_controller.PXROM.U0.\native_mem_module.blk_mem_gen_v8_4_7_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
 Block Memory Generator module neuron_ctrl_tb.neuron_controller.WROM1.U0.\native_mem_module.blk_mem_gen_v8_4_7_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module neuron_ctrl_tb.neuron_controller.PXROM.U0.\native_mem_module.blk_mem_gen_v8_4_7_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Failure: Simulation Completed
+Time: 31396 ns  Iteration: 0  Process: /neuron_ctrl_tb/line__39  File: C:/Vivado/final_project/digit-classifier/MNIST_FPGA/MNIST_FPGA.srcs/neuronTest1/new/neuron_ctrl_tb.vhd
+$finish called at time : 31396 ns : File "C:/Vivado/final_project/digit-classifier/MNIST_FPGA/MNIST_FPGA.srcs/neuronTest1/new/neuron_ctrl_tb.vhd" Line 57

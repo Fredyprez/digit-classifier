@@ -2,6 +2,8 @@ INFO: [VRFC 10-163] Analyzing VHDL file "C:/Vivado/final_project/digit-classifie
 INFO: [VRFC 10-3107] analyzing entity 'accumulation'
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Vivado/final_project/digit-classifier/MNIST_FPGA/MNIST_FPGA.srcs/sources_1/imports/synth/w1_blk_rom.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'w1_blk_rom'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Vivado/final_project/digit-classifier/MNIST_FPGA/MNIST_FPGA.srcs/neuronTest1/imports/synth/px_blk_rom.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'px_blk_rom'
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Vivado/final_project/digit-classifier/MNIST_FPGA/MNIST_FPGA.srcs/sources_1/new/neuron_ctrl.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'neuron_ctrl'
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Vivado/final_project/digit-classifier/MNIST_FPGA/MNIST_FPGA.srcs/neuronTest1/new/neuron_ctrl_tb.vhd" into library xil_defaultlib
